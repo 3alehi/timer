@@ -1,6 +1,6 @@
 (function () {
   const second = 1000,
-        minute = second * 110,
+        minute = second * 118,
         hour = minute * 60,
         day = hour * 24;
 
