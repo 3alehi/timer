@@ -213,7 +213,7 @@ See you.
   max-width: 100%;
   height:158px;
   position: absolute;
-  top: 50%;
+  top: 110%;
   left: 50%;
   z-index: 1;
   transform: translate(-50%, -50%);
@@ -711,3 +711,4 @@ See you.
       transform: translateY(-30px) scale(1, 1);
   }
 }
+
