@@ -1,22 +1,36 @@
 <!DOCTYPE html>
 <html lang="en" >
-<head>
-  <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-
-<meta property="og:image" content="https://i.imgur.com/9xiPyyv.png" /><link rel="stylesheet" href="./style.css">
-  <title>میخندی؟</title>
-  <link rel="stylesheet" href="./style.css">
-
-</head>
-<body>
-<!-- partial:index.partial.html -->
-<div class="container">
-  <h1 id="headline">مانده تا استعفا</h1>
-  <h1 id="countdown"></h1>
-<br><br><br><br><br>
-<div id="deadline">
-  <svg preserveAspectRatio="none" id="line" viewBox="0 0 581 158" enable-background="new 0 0 581 158">
-    <g id="fire">
+  <head>
+    <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+    
+    <meta property="og:image" content="https://i.imgur.com/9xiPyyv.png" /><link rel="stylesheet" href="./style.css">
+    <title>میخندی؟</title>
+    <link rel="stylesheet" href="./style.css">
+    
+  </head>
+  <body>
+    <!-- partial:index.partial.html -->
+    <div class="container">
+      <h1 id="headline">مانده تا استعفا</h1>
+      <h1 id="countdown"></h1>
+      <br><br><br><br><br>
+      <div class="send-mg">
+        <P class="text">هرگونه نظری داشتید بصورت گمنام با اعضای تیم در ارتباط باشید</P>
+        <form class="cf"
+        action="https://formspree.io/f/xbjekdqk"
+        method="POST">
+          <div class="half left cf">
+            <input type="text" id="input-subject" placeholder="موضوع">
+          </div>
+          <div class="half right cf">
+            <textarea name="message" type="text" id="input-message" placeholder="پیغام شما"></textarea>
+          </div>  
+          <input type="submit" value="Submit" id="input-submit">
+        </form>
+      </div>
+      <div id="deadline">
+        <svg preserveAspectRatio="none" id="line" viewBox="0 0 581 158" enable-background="new 0 0 581 158">
+          <g id="fire">
       <rect id="mask-fire-black" x="511" y="41" width="38" height="34"/>
       <g>
         <defs>
@@ -102,20 +116,6 @@
 </div>
 <!-- partial -->
 <br><br><br><br><br>
-<div class="send-mg">
-  <P class="text">هرگونه نظری داشتید بصورت گمنام با اعضای تیم در ارتباط باشید</P>
-  <form class="cf"
-  action="https://formspree.io/f/xbjekdqk"
-  method="POST">
-    <div class="half left cf">
-      <input type="text" id="input-subject" placeholder="موضوع">
-    </div>
-    <div class="half right cf">
-      <textarea name="message" type="text" id="input-message" placeholder="پیغام شما"></textarea>
-    </div>  
-    <input type="submit" value="ارسال" id="input-submit">
-  </form>
-</div>
 <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
 
   <script  src="./script.js"></script>
