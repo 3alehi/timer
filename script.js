@@ -1,43 +1,104 @@
-(function () {
-  const second = 1000,
-        minute = second * 118,
-        hour = minute * 60,
-        day = hour * 24;
+// set the date we're counting down to
+var target_date = new Date("Mar 20, 2023").getTime();
+ 
+// variables for time units
+var days, hours, minutes, seconds;
+ 
+// get tag element
+var countdown = document.getElementById("countdown");
+ 
+// update the tag with id "countdown" every 1 second
+setInterval(function () {
+ 
+    // find the amount of "seconds" between now and target
+    var current_date = new Date().getTime();
+    var seconds_left = (target_date - current_date) / 1000;
+ 
+    // do some time calculations
+    days = parseInt(seconds_left / 86400);
+    seconds_left = seconds_left % 86400;
+     
+    hours = parseInt(seconds_left / 3600);
+    seconds_left = seconds_left % 3600;
+     
+    minutes = parseInt(seconds_left / 60);
+    seconds = parseInt(seconds_left % 60);
+     
+    // format countdown string + set tag value
+    countdown.innerHTML = days + "d " + hours + "h "
+    + minutes + "m " + seconds + "s ";  
+ 
+}, 1000);
+// Init
+var $ = jQuery;
+var animationTime = 20,
+    days = 7;
+ 
+$(document).ready(function(){
 
-  //I'm adding this section so I don't have to keep updating this pen every year :-)
-  //remove this if you don't need it
-  let today = new Date(),
-      dd = String(today.getDate()).padStart(2, "0"),
-      mm = String(today.getMonth() + 1).padStart(2, "0"),
-      yyyy = today.getFullYear(),
-      nextYear = yyyy + 1,
-      dayMonth = "04/01/",
-      birthday = dayMonth + yyyy;
-  
-  today = mm + "/" + dd + "/" + yyyy;
-  if (today > birthday) {
-    birthday = dayMonth + nextYear;
-  }
-  //end
-  
-  const countDown = new Date(birthday).getTime(),
-      x = setInterval(function() {    
+    // timer arguments: 
+    //   #1 - time of animation in mileseconds, 
+    //   #2 - days to deadline
 
-        const now = new Date().getTime(),
-              distance = countDown - now;
+    $('#progress-time-fill, #death-group').css({'animation-duration': animationTime+'s'});
 
-        document.getElementById("days").innerText = Math.floor(distance / (day)),
-          document.getElementById("hours").innerText = Math.floor((distance % (day)) / (hour)),
-          document.getElementById("minutes").innerText = Math.floor((distance % (hour)) / (minute)),
-          document.getElementById("seconds").innerText = Math.floor((distance % (minute)) / second);
+    var deadlineAnimation = function () {
+        setTimeout(function(){
+            $('#designer-arm-grop').css({'animation-duration': '1.5s'});
+        },0);
 
-        //do something later when date is reached
-        if (distance < 0) {
-          document.getElementById("headline").innerText = "It's my birthday!";
-          document.getElementById("countdown").style.display = "none";
-          document.getElementById("content").style.display = "block";
-          clearInterval(x);
+        setTimeout(function(){
+            $('#designer-arm-grop').css({'animation-duration': '1s'});
+        },4000);
+
+        setTimeout(function(){
+            $('#designer-arm-grop').css({'animation-duration': '0.7s'});
+        },8000);
+
+        setTimeout(function(){
+            $('#designer-arm-grop').css({'animation-duration': '0.3s'});
+        },12000);
+
+        setTimeout(function(){
+            $('#designer-arm-grop').css({'animation-duration': '0.2s'});
+        },15000);
+    };
+
+    function timer(totalTime, deadline) {
+        var time = totalTime * 1000;
+        var dayDuration = time / deadline;
+        var actualDay = deadline;
+
+        var timer = setInterval(countTime, dayDuration);
+
+        function countTime() {
+            --actualDay;
+            $('.deadline-days .day').text(actualDay);
+
+            if (actualDay == 0) {
+                clearInterval(timer);
+                $('.deadline-days .day').text(deadline);
+            }
         }
-        //seconds
-      }, 0)
-  }());
+    }
+
+    var deadlineText = function () {
+        var $el = $('.deadline-days');
+        var html = '<div class="mask-red"><div class="inner">' + $el.html() + '</div></div><div class="mask-white"><div class="inner">' + $el.html() + '</div></div>';
+        $el.html(html);
+    }
+
+    deadlineText();
+
+    deadlineAnimation();
+    timer(animationTime, days);
+
+    setInterval(function(){
+        timer(animationTime, days);
+        deadlineAnimation();
+
+        console.log('begin interval', animationTime * 1000);
+
+    }, animationTime * 1000);
+
+});
